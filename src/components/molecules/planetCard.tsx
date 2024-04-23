@@ -17,5 +17,5 @@ export const PlanetCard = (planet: Planet) => {
     },
   ]
 
-  return <Card title={planet.name} description={description} />
+  return <Card title={planet.name} description={description} navigateTo='' />
 }

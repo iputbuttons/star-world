@@ -1,5 +1,4 @@
 import { Card } from '@components/atoms/card'
-import { Link } from 'expo-router'
 import { getPersonIdFromUrl } from 'services/swapi/people/people.helpers'
 import { Person } from 'services/swapi/people/people.types'
 
@@ -26,8 +25,10 @@ export const PeopleCard = (person: Person) => {
   ]
 
   return (
-    <Link href={`/person/${personId}`}>
-      <Card title={person.name} description={description} />
-    </Link>
+    <Card
+      title={person.name}
+      description={description}
+      navigateTo={`person/${personId}`}
+    />
   )
 }
