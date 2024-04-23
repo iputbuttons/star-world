@@ -1,7 +1,9 @@
-import { Button } from '@components/atoms/button'
 import { Screen } from '@components/atoms/screen'
+import { DataLoader } from '@components/molecules/dataLoader'
+import { PageError } from '@components/molecules/pageError'
+import { PageLoader } from '@components/molecules/pageLoader'
 import { PeopleCard } from '@components/molecules/peopleCard'
-import { FlatList, Text, ActivityIndicator } from 'react-native'
+import { FlatList } from 'react-native'
 import { usePeople } from 'services/swapi/people/people.hook'
 import { Person } from 'services/swapi/people/people.types'
 
@@ -16,36 +18,16 @@ export default function People() {
     refetch,
   } = usePeople()
 
-  const handleRetry = () => refetch()
+  if (isLoading) return <PageLoader />
 
-  const renderFooter = () => {
-    if (!isFetchingNextPage) return null
-    return <ActivityIndicator />
-  }
-
-  if (isLoading)
-    return (
-      <Screen>
-        <Text className='font-gabarito text-white text-2xl'>Loading...</Text>
-      </Screen>
-    )
-
-  if (error instanceof Error)
-    return (
-      <Screen>
-        <Text className='font-gabarito text-white text-2xl'>
-          An error occurred: {error.message}
-        </Text>
-        <Button onPress={handleRetry}>Retry</Button>
-      </Screen>
-    )
+  if (error instanceof Error) return <PageError error={error} retry={refetch} />
 
   return (
     <Screen>
       <FlatList
         data={data?.pages.flatMap((page) => page.results)}
         keyExtractor={({ url }) => url}
-        ListFooterComponent={renderFooter}
+        ListFooterComponent={<DataLoader isFetching={isFetchingNextPage} />}
         onEndReached={() => hasNextPage && fetchNextPage()}
         onEndReachedThreshold={0.5}
         renderItem={({ item }: { item: Person }) => <PeopleCard {...item} />}

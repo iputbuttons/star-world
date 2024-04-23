@@ -1,4 +1,3 @@
-import { Gavel } from '@components/icons/gavel'
 import { People } from '@components/icons/people'
 import { Planets } from '@components/icons/planets'
 import { Starships } from '@components/icons/starships'
