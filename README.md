@@ -17,8 +17,8 @@ Star World is a mobile application developed using React Native and TypeScript. 
 - SWAPI (https://swapi.py4e.com/)
 
 ## Project Structure
-```
 
+```
 /src
    /app        # Application screens
    /assets     # Static files
@@ -26,28 +26,32 @@ Star World is a mobile application developed using React Native and TypeScript. 
    /configs    # Library configuration
    /hooks      # Custom hooks
    /services   # API functions to make requests
-
-````
+```
 
 ## Installation
 
 To run this project locally, follow these steps:
 
 1. Clone the repository:
+
 ```bash
    git clone https://gitlab.com/username/star-world.git
 ```
 
 2. Install dependencies:
+
 ```bash
    npm install
 ```
+
 3. Start the development server:
+
 ```bash
    expo start
 ```
 
-## Usage
+## Design
 
-Once the application is running, you can navigate through the different screens using the user interface to explore characters and planets.
+You can view the design mockups for this application on Figma at the following link:
 
+[Figma Designs for Star World](https://www.figma.com/file/9QXl5Rx2GXoGV7QJOhU277/Star-World?type=design&node-id=0%3A1&mode=design&t=hZNbrPQQ6cJC4NC9-1)
